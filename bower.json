@@ -12,6 +12,8 @@
     "html5-boilerplate": "latest",
     "bootstrap": "latest",
     "angular-translate": "latest",
-    "flag-icon-css": "latest"
+    "flag-icon-css": "latest",
+    "ng-image-gallery": "latest",
+    "angular-animate": "latest"
   }
 }

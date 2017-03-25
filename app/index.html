@@ -13,12 +13,15 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="bower_components/ng-image-gallery/dist/ng-image-gallery.min.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="bower_components/ng-image-gallery/dist/ng-image-gallery.min.js"></script>
   <script src="app.js"></script>
 </head>
 <body data-ng-cloak>
@@ -41,10 +44,10 @@
 
     <div class="block-menu">
       <ul class="nav nav-tabs nav-justified nav-mazaci">
-        <li><a href="#" data-ng-click="showTab('home')" data-ng-class="{'active':view=='home'}"><span class="glyphicon glyphicon-home"></span> <span data-ng-bind="'home.menu'|translate">Domů</span></a></li>
-        <li><a href="#" data-ng-click="showTab('prices')" data-ng-class="{'active':view=='prices'}"><span class="glyphicon glyphicon-euro"></span> <span data-ng-bind="'prices.menu'|translate">Ceník</span></a></li>
-        <li><a href="#" data-ng-click="showTab('contacts')" data-ng-class="{'active':view=='contacts'}"><span class="glyphicon glyphicon-phone-alt"></span> <span data-ng-bind="'contacts.menu'|translate">Kontakt</span></a></li>
-        <li><a href="#" data-ng-click="showTab('references')" data-ng-class="{'active':view=='references'}"><span class="glyphicon glyphicon-flag"></span> <span data-ng-bind="'references.menu'|translate">Reference</span></a></li>
+        <li><a href="#home" data-ng-click="showTab('home')" data-ng-class="{'active':view=='home'}"><span class="glyphicon glyphicon-home"></span> <span data-ng-bind="'home.menu'|translate">Domů</span></a></li>
+        <li><a href="#prices" data-ng-click="showTab('prices')" data-ng-class="{'active':view=='prices'}"><span class="glyphicon glyphicon-euro"></span> <span data-ng-bind="'prices.menu'|translate">Ceník</span></a></li>
+        <li><a href="#contacts" data-ng-click="showTab('contacts')" data-ng-class="{'active':view=='contacts'}"><span class="glyphicon glyphicon-phone-alt"></span> <span data-ng-bind="'contacts.menu'|translate">Kontakt</span></a></li>
+        <li><a href="#references" data-ng-click="showTab('references')" data-ng-class="{'active':view=='references'}"><span class="glyphicon glyphicon-flag"></span> <span data-ng-bind="'references.menu'|translate">Reference</span></a></li>
       </ul>
     </div>
 
@@ -120,8 +123,21 @@
         </div>
       </div>
 
-      <div data-ng-show="view == 'references'">
+      <div data-ng-show="view == 'references'" style="text-align:-webkit-center;">
         <h1 class="header-mazaci" data-ng-bind="'references.header'|translate">Reference</h1>
+        <div data-ng-image-gallery
+            images="images"
+            methods="methods"
+            thumbnails="true"
+            inline="true"
+            img-bubbles="true"
+            bg-close="true"
+            bubbles="true"
+            img-anim="fadeup"
+            conf="conf"
+            on-open="opened();"
+            on-close="closed();"
+        ></div>
       </div>
 
     </div>

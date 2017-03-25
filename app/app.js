@@ -1,12 +1,16 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('mazaci.cz', ['pascalprecht.translate'])
+angular.module('mazaci.cz', ['pascalprecht.translate', 'thatisuday.ng-image-gallery'])
 
-.controller('MazaciController', function ($scope, $translate) {
-  $scope.view = "home";
+.controller('MazaciController', function ($scope, $translate, $location) {
+  $scope.view = $location.hash().toLowerCase();
+  if(['home', 'prices', 'contacts', 'references'].indexOf($scope.view) == -1) {
+    $scope.view = 'home';
+  }
   $scope.showTab = function (name) {
     $scope.view = name;
+    $location.hash(name);
   };
   $scope.language = "cz";
   $scope.changeLanguage = function (lang) {
@@ -47,6 +51,14 @@ angular.module('mazaci.cz', ['pascalprecht.translate'])
     email : "dalsi@mazaci.cz",
     dic : "XXXCZ",
     photo : "url('img/contacts/toufar.png')"
+  }];
+
+  $scope.images = [{
+    url : 'img/gallery/test1.jpg',
+    title : 'test1'
+  }, {
+    url : 'img/gallery/test2.jpg',
+    title : 'test2'
   }];
 })
 

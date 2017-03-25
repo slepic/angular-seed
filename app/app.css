@@ -6,7 +6,7 @@
   cursor: pointer;
 }
 
-a, a:hover, a:active, a:visited, .logo, .header_mazaci {
+a, a:link, a:hover, a:active, a:visited, .logo, .header_mazaci {
   color: #090;
 }
 
@@ -59,4 +59,8 @@ a, a:hover, a:active, a:visited, .logo, .header_mazaci {
   transform: scaleX(-1);
   filter: FlipH;
   -ms-filter: “FlipH”;
+}
+
+.ng-image-gallery.inline .ng-image-gallery-modal {
+  height: 600px;
 }
