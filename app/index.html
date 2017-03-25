@@ -1,43 +1,135 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" data-ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" data-ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" data-ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" data-ng-app="mazaci.cz" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>Mazáci.cz</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
-<body>
-  <ul class="menu">
-    <li><a href="#!/view1">view1</a></li>
-    <li><a href="#!/view2">view2</a></li>
-  </ul>
-
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-translate/angular-translate.min.js"></script>
   <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+</head>
+<body data-ng-cloak>
+  <div class="wrapper-main container" data-ng-controller="MazaciController">
+    <div class="block-header page-header">
+      <div class="lang-selection pull-right">
+        <div class="btn-group">
+          <div class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="flag-icon flag-icon-cz" data-ng-class="languages[language].class"></span> <span class="caret"></span>
+          </div>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a href="#" data-ng-click="changeLanguage('cz')"><span class="flag-icon flag-icon-cz pull-right"></span>Česky</a></li>
+            <li><a href="#" data-ng-click="changeLanguage('de')"><span class="flag-icon flag-icon-de pull-right"></span>Deutsch</a></li>
+            <li><a href="#" data-ng-click="changeLanguage('en')"><span class="flag-icon flag-icon-gb pull-right"></span>English</a></li>
+          </ul>
+        </div>
+      </div>
+      <div data-ng-click="showTab('home')" class="logo">MAZÁCI.cz</div>
+    </div>
+
+    <div class="block-menu">
+      <ul class="nav nav-tabs nav-justified nav-mazaci">
+        <li><a href="#" data-ng-click="showTab('home')" data-ng-class="{'active':view=='home'}"><span class="glyphicon glyphicon-home"></span> <span data-ng-bind="'home.menu'|translate">Domů</span></a></li>
+        <li><a href="#" data-ng-click="showTab('prices')" data-ng-class="{'active':view=='prices'}"><span class="glyphicon glyphicon-euro"></span> <span data-ng-bind="'prices.menu'|translate">Ceník</span></a></li>
+        <li><a href="#" data-ng-click="showTab('contacts')" data-ng-class="{'active':view=='contacts'}"><span class="glyphicon glyphicon-phone-alt"></span> <span data-ng-bind="'contacts.menu'|translate">Kontakt</span></a></li>
+        <li><a href="#" data-ng-click="showTab('references')" data-ng-class="{'active':view=='references'}"><span class="glyphicon glyphicon-flag"></span> <span data-ng-bind="'references.menu'|translate">Reference</span></a></li>
+      </ul>
+    </div>
+
+    <div class="block-content">
+
+      <div data-ng-show="view == 'home'">
+        <h1 class="header-mazaci" data-ng-bind="'home.header'|translate">Výškové práce</h1>
+        <p>Jsme nezávislá skupina živnostníků, zaměřená na výškové práce všeho druhu.</p>
+        <p>Orientační ceny prací najdete v našem <a href="#" data-ng-click="showTab('prices')">ceníku</a>.</p>
+        <p>V případě dotazů se neváhejte obrátit na kteréhokoliv z mazáků. Seznam kontaktů naleznete <a href="#" data-ng-click="showTab('contacts')">zde</a>.</p>
+        <p>Mezi naše zákazníky patří ten a ten a taky ten. A <a href="#" data-ng-click="showTab('references')">mnoho dalších</a>...</p>
+      </div>
+
+      <div data-ng-show="view == 'prices'">
+        <h1 class="header-mazaci" data-ng-bind="'prices.header'|translate">Ceník služeb</h1>
+        <table class="table table-striped table-bordered table-hover table-mazaci">
+          <colgroup>
+            <col class="col-md-10" />
+            <col class="col-md-2" />
+          </colgroup>
+          <thead class="thead thead-mazaci">
+            <tr>
+              <th>Typ práce</th>
+              <th>Cena</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nátěr</td>
+              <td>150 Kč/m<sup>2</sup></td>
+            </tr>
+            <tr>
+              <td>Dojezd</td>
+              <td>5 Kč/km</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div data-ng-show="view == 'contacts'">
+        <h1 class="header-mazaci" data-ng-bind="'contacts.header'|translate">Kontakty</h1>
+        <div data-ng-repeat="contact in contacts" class="jumbotron jumbotron-mazaci wrapper-contact">
+          <div class="col-md-5" data-ng-class="{'pull-right':$index%2==0, 'pull-left':$index%2==1}" data-ng-style="{'text-align':($index%2==0?'-webkit-right':'-webkit-left')}">
+            <div style="background-color: red; width: 300px; height: 200px;" data-ng-style="{'background-image':contact.photo}"></div>
+          </div>
+          <div data-ng-class="{'pull-right':$index%2==1, 'pull-left':$index%2==0}" class="col-md-7">
+            <table class="table table-mazaci-contacts">
+              <colgroup>
+                <col class="col-md-2" />
+                <col class="col-md-4" />
+              </colgroup>
+              <tbody>
+                <tr>
+                  <th data-ng-bind="'contacts.labels.name'|translate"></th>
+                  <td data-ng-bind="contact.name"></td>
+                </tr>
+                <tr>
+                  <th data-ng-bind="'contacts.labels.phone'|translate"></th>
+                  <td data-ng-bind="contact.phone"></td>
+                </tr>
+                <tr>
+                  <th data-ng-bind="'contacts.labels.email'|translate"></th>
+                  <td><a href="#" data-ng-href="mailto:{{contact.email}}"><span data-ng-bind="contact.email"></span></a></td>
+                </tr>
+                <tr>
+                  <th data-ng-bind="'contacts.labels.dic'|translate"></th>
+                  <td data-ng-bind="contact.dic"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="clear:both;"></div>
+        </div>
+      </div>
+
+      <div data-ng-show="view == 'references'">
+        <h1 class="header-mazaci" data-ng-bind="'references.header'|translate">Reference</h1>
+      </div>
+
+    </div>
+
+    <div class="block-footer">
+      Copyleft <span class="copy-left">&copy;</span> 2017 <a>slepic</a> | Designed for <a href="#" data-ng-click="showTab('home')">mazáci.cz</a> | Powered by <a>Angular.js</a> | Decorated with <a>Bootstrap CSS</a> | Hosted on <a>GitHub</a> | Country flags provided by <a>Flag Icon CSS</a>
+    </div>
+  </div>
+
 </body>
 </html>

@@ -1,25 +1,62 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+.logo {
+  font-size: 75px;
 }
 
-.menu:before {
-  content: "[";
+.logo:hover {
+  cursor: pointer;
 }
 
-.menu:after {
-  content: "]";
+a, a:hover, a:active, a:visited, .logo, .header_mazaci {
+  color: #090;
 }
 
-.menu > li {
-  display: inline;
+.nav-mazaci li a:visited, .nav-mazaci li a.active, .jumbotron-mazaci, .thead-mazaci {
+  background-color: #a3ff90;
 }
 
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+.header-mazaci {
+  text-align: center;
+  color: #090;
+}
+
+.table-striped.table-mazaci>tbody>tr:nth-of-type(odd) {
+  background-color: white;
+}
+
+.table-striped.table-mazaci>tbody>tr:nth-of-type(even) {
+  background-color: #f3ffe0;
+}
+
+.table-hover.table-mazaci>tbody>tr:hover, .nav-mazaci li a:hover:not(.active) {
+  background-color: #d3ffc0;
+}
+
+.table.table-mazaci-contacts>tbody>tr>td, .table.table-mazaci-contacts>tbody>tr>th {
+  border: none;
+  border-bottom: 1px solid green;
+  padding-bottom: 2px;
+  padding-top: 1.5em;
+}
+
+.table-mazaci-contacts>tbody>tr>td {
+  text-align: right;
+}
+
+.block-footer {
+  border-top: 1px solid green;
+  text-align: center;
+  padding: 10px;
+  margin: 10px 0px;
+}
+
+.copy-left {
+  display: inline-block;
+  text-align: right;
+  margin: 0px;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: “FlipH”;
 }
