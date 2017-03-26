@@ -30,12 +30,12 @@
       <div class="lang-selection pull-right">
         <div class="btn-group">
           <div class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="flag-icon flag-icon-cz" data-ng-class="languages[language].class"></span> <span class="caret"></span>
+            <span class="flag-icon flag-icon-cz"></span> <span class="caret"></span>
           </div>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="#" data-ng-click="changeLanguage('cz')"><span class="flag-icon flag-icon-cz pull-right"></span>Česky</a></li>
-            <li><a href="#" data-ng-click="changeLanguage('de')"><span class="flag-icon flag-icon-de pull-right"></span>Deutsch</a></li>
-            <li><a href="#" data-ng-click="changeLanguage('en')"><span class="flag-icon flag-icon-gb pull-right"></span>English</a></li>
+            <li><a href="#"><span class="flag-icon flag-icon-cz pull-right"></span>Česky</a></li>
+            <li><a href="de.html"><span class="flag-icon flag-icon-de pull-right"></span>Deutsch</a></li>
+            <li><a href="en.html"><span class="flag-icon flag-icon-gb pull-right"></span>English</a></li>
           </ul>
         </div>
       </div>
@@ -44,17 +44,37 @@
 
     <div class="block-menu">
       <ul class="nav nav-tabs nav-justified nav-mazaci">
-        <li><a href="#home" data-ng-click="showTab('home')" data-ng-class="{'active':view=='home'}"><span class="glyphicon glyphicon-home"></span> <span data-ng-bind="'home.menu'|translate">Domů</span></a></li>
-        <li><a href="#prices" data-ng-click="showTab('prices')" data-ng-class="{'active':view=='prices'}"><span class="glyphicon glyphicon-euro"></span> <span data-ng-bind="'prices.menu'|translate">Ceník</span></a></li>
-        <li><a href="#contacts" data-ng-click="showTab('contacts')" data-ng-class="{'active':view=='contacts'}"><span class="glyphicon glyphicon-phone-alt"></span> <span data-ng-bind="'contacts.menu'|translate">Kontakt</span></a></li>
-        <li><a href="#references" data-ng-click="showTab('references')" data-ng-class="{'active':view=='references'}"><span class="glyphicon glyphicon-flag"></span> <span data-ng-bind="'references.menu'|translate">Reference</span></a></li>
+        <li>
+          <a href="#home" data-ng-click="showTab('home')" data-ng-class="{'active':view=='home'}">
+            <span class="glyphicon glyphicon-home"></span>
+            Domů
+          </a>
+        </li>
+        <li>
+          <a href="#prices" data-ng-click="showTab('prices')" data-ng-class="{'active':view=='prices'}">
+            <span class="glyphicon glyphicon-euro"></span>
+            Ceník
+          </a>
+        </li>
+        <li>
+          <a href="#contacts" data-ng-click="showTab('contacts')" data-ng-class="{'active':view=='contacts'}">
+            <span class="glyphicon glyphicon-phone-alt"></span>
+            Kontakt
+          </a>
+        </li>
+        <li>
+          <a href="#references" data-ng-click="showTab('references')" data-ng-class="{'active':view=='references'}">
+            <span class="glyphicon glyphicon-flag"></span>
+            Reference
+          </a>
+        </li>
       </ul>
     </div>
 
     <div class="block-content">
 
       <div data-ng-show="view == 'home'">
-        <h1 class="header-mazaci" data-ng-bind="'home.header'|translate">Výškové práce</h1>
+        <h1 class="header-mazaci">Výškové práce</h1>
         <p>Jsme nezávislá skupina živnostníků, zaměřená na výškové práce všeho druhu.</p>
         <p>Orientační ceny prací najdete v našem <a href="#" data-ng-click="showTab('prices')">ceníku</a>.</p>
         <p>V případě dotazů se neváhejte obrátit na kteréhokoliv z mazáků. Seznam kontaktů naleznete <a href="#" data-ng-click="showTab('contacts')">zde</a>.</p>
@@ -62,7 +82,7 @@
       </div>
 
       <div data-ng-show="view == 'prices'">
-        <h1 class="header-mazaci" data-ng-bind="'prices.header'|translate">Ceník služeb</h1>
+        <h1 class="header-mazaci">Ceník služeb</h1>
         <table class="table table-striped table-bordered table-hover table-mazaci">
           <colgroup>
             <col class="col-md-10" />
@@ -88,10 +108,10 @@
       </div>
 
       <div data-ng-show="view == 'contacts'">
-        <h1 class="header-mazaci" data-ng-bind="'contacts.header'|translate">Kontakty</h1>
+        <h1 class="header-mazaci">Kontakty</h1>
         <div data-ng-repeat="contact in contacts" class="jumbotron jumbotron-mazaci wrapper-contact">
           <div class="col-md-5" data-ng-class="{'pull-right':$index%2==0, 'pull-left':$index%2==1}" data-ng-style="{'text-align':($index%2==0?'-webkit-right':'-webkit-left')}">
-            <div style="background-color: red; width: 300px; height: 200px;" data-ng-style="{'background-image':contact.photo}"></div>
+            <div class="mazaci-portrait" data-ng-style="{'background-image':contact.photo}"></div>
           </div>
           <div data-ng-class="{'pull-right':$index%2==1, 'pull-left':$index%2==0}" class="col-md-7">
             <table class="table table-mazaci-contacts">
@@ -101,7 +121,7 @@
               </colgroup>
               <tbody>
                 <tr>
-                  <th data-ng-bind="'contacts.labels.name'|translate"></th>
+                  <th></th>
                   <td data-ng-bind="contact.name"></td>
                 </tr>
                 <tr>
@@ -123,12 +143,32 @@
         </div>
       </div>
 
-      <div data-ng-show="view == 'references'" style="text-align:-webkit-center;">
-        <h1 class="header-mazaci" data-ng-bind="'references.header'|translate">Reference</h1>
+      <div data-ng-show="view == 'references'">
+        <h1 class="header-mazaci">Reference</h1>
+        <div class="jumbotron jumbotron-mazaci container-fluid">
+          <div class="col-md-4">
+            <a href="#references" data-ng-click="showImages('silo')">
+              <div class="mazaci-portrait mazaci-portrait-side"></div>
+              <h2 class="header-mazaci">Sila</h2>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="#references" data-ng-click="showImages('chimney')">
+              <div class="mazaci-portrait"></div>
+              <h2 class="header-mazaci">Komíny</h2>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="#references" data-ng-click="showImages()">
+              <div class="mazaci-portrait mazaci-portrait-side"></div>
+              <h2 class="header-mazaci">Sloupy</h2>
+            </a>
+          </div>
+        </div>
         <div data-ng-image-gallery
             images="images"
             methods="gallery"
-            thumbnails="true"
+            thumbnails="false"
         ></div>
       </div>
 

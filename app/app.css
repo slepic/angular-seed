@@ -61,6 +61,12 @@ a, a:link, a:hover, a:active, a:visited, .logo, .header_mazaci {
   -ms-filter: “FlipH”;
 }
 
-.ng-image-gallery.inline .ng-image-gallery-modal {
-  height: 600px;
+.mazaci-portrait {
+  background-color: red;
+  width: 300px;
+  height: 200px;
+}
+
+.mazaci-portrait-side {
+  margin-top: 2em;
 }
