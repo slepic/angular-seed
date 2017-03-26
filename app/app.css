@@ -10,15 +10,7 @@ a, a:link, a:hover, a:active, a:visited, .logo, .header_mazaci {
   color: #090;
 }
 
-.jumbotron-mazaci, .thead-mazaci {
-  background-color: #a3ff90;
-}
-
-.btn-mazaci-menu.active {
-  background-color: #a3ff90;
-}
-
-.btn-mazaci-menu:hover {
+.nav-mazaci li a:visited, .nav-mazaci li a.active, .jumbotron-mazaci, .thead-mazaci {
   background-color: #a3ff90;
 }
 
@@ -35,7 +27,7 @@ a, a:link, a:hover, a:active, a:visited, .logo, .header_mazaci {
   background-color: #f3ffe0;
 }
 
-.table-hover.table-mazaci>tbody>tr:hover, .btn-mazaci-menu:hover:not(.active) {
+.table-hover.table-mazaci>tbody>tr:hover, .nav-mazaci li a:hover:not(.active) {
   background-color: #d3ffc0;
 }
 

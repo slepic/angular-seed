@@ -53,35 +53,13 @@ angular.module('mazaci.cz', ['pascalprecht.translate', 'thatisuday.ng-image-gall
     photo : "url('img/contacts/toufar.png')"
   }];
 
-  $scope.allImages = [{
-    type : 'silo',
+  $scope.images = [{
     url : 'img/gallery/test1.jpg',
     title : 'test1'
   }, {
-    type : 'chimney',
     url : 'img/gallery/test2.jpg',
     title : 'test2'
-  }, {
-    type : 'chimney',
-    url : 'img/gallery/test2.jpg',
-    title : 'test3'
   }];
-
-  $scope.filterImages = function (type) {
-    var images = [];
-    for(var i=0; i<$scope.allImages.length; ++i) {
-      if(!type || $scope.allImages[i].type == type) {
-        images.push($scope.allImages[i]);
-      }
-    }
-    $scope.images = images;
-  };
-  $scope.filterImages();
-
-  $scope.showImages = function (type) {
-    $scope.filterImages(type);
-    $scope.gallery.open(0);
-  };
 })
 
 .config(function ($translateProvider) {

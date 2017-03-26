@@ -26,7 +26,6 @@
 </head>
 <body data-ng-cloak>
   <div class="wrapper-main container" data-ng-controller="MazaciController">
-
     <div class="block-header page-header">
       <div class="lang-selection pull-right">
         <div class="btn-group">
@@ -41,39 +40,15 @@
         </div>
       </div>
       <div data-ng-click="showTab('home')" class="logo">MAZÁCI.cz</div>
+    </div>
 
-      <div class="btn-group btn-group-justified">
-        <div class="btn btn-mazaci-menu" data-ng-click="showTab('home')" data-ng-class="{'active':view=='home'}">
-          <a href="#">
-            <span class="glyphicon glyphicon-home"></span>
-            Domů
-          </a>
-        </div>
-        <div class="btn btn-mazaci-menu" data-ng-click="showTab('prices')" data-ng-class="{'active':view=='prices'}">
-          <a href="#prices">
-            <span class="glyphicon glyphicon-euro"></span>
-            Ceník
-          </a>
-        </div>
-        <div class="btn btn-mazaci-menu" data-ng-click="showTab('contacts')" data-ng-class="{'active':view=='contacts'}">
-          <a href="#contacts">
-            <span class="glyphicon glyphicon-phone-alt"></span>
-            Kontakt
-          </a>
-        </div>
-        <div class="btn btn-mazaci-menu">
-          <div>
-            <a href="#" class="btn-mazaci-menu" data-ng-click="showImages()"><span class="glyphicon glyphicon-flag"></span> Reference</a>
-            <span href="#" class="btn-mazaci-menu dropdown-toggle pull-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="caret"></span>
-            </span>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li><a href="#" data-ng-click="showImages('silo')">Sila</a></li>
-              <li><a href="#" data-ng-click="showImages('chimney')">Komíny</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <div class="block-menu">
+      <ul class="nav nav-tabs nav-justified nav-mazaci">
+        <li><a href="#home" data-ng-click="showTab('home')" data-ng-class="{'active':view=='home'}"><span class="glyphicon glyphicon-home"></span> <span data-ng-bind="'home.menu'|translate">Domů</span></a></li>
+        <li><a href="#prices" data-ng-click="showTab('prices')" data-ng-class="{'active':view=='prices'}"><span class="glyphicon glyphicon-euro"></span> <span data-ng-bind="'prices.menu'|translate">Ceník</span></a></li>
+        <li><a href="#contacts" data-ng-click="showTab('contacts')" data-ng-class="{'active':view=='contacts'}"><span class="glyphicon glyphicon-phone-alt"></span> <span data-ng-bind="'contacts.menu'|translate">Kontakt</span></a></li>
+        <li><a href="#references" data-ng-click="showTab('references')" data-ng-class="{'active':view=='references'}"><span class="glyphicon glyphicon-flag"></span> <span data-ng-bind="'references.menu'|translate">Reference</span></a></li>
+      </ul>
     </div>
 
     <div class="block-content">
@@ -148,12 +123,22 @@
         </div>
       </div>
 
-      <div data-ng-image-gallery
-          images="images"
-          methods="gallery"
-          thumbnails="false"
-          inline="false"
-      ></div>
+      <div data-ng-show="view == 'references'" style="text-align:-webkit-center;">
+        <h1 class="header-mazaci" data-ng-bind="'references.header'|translate">Reference</h1>
+        <div data-ng-image-gallery
+            images="images"
+            methods="methods"
+            thumbnails="true"
+            inline="true"
+            img-bubbles="true"
+            bg-close="true"
+            bubbles="true"
+            img-anim="fadeup"
+            conf="conf"
+            on-open="opened();"
+            on-close="closed();"
+        ></div>
+      </div>
 
     </div>
 
