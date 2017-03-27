@@ -1,5 +1,5 @@
 .logo {
-  font-size: 75px;
+  font-size: 400%;
 }
 
 .logo:hover {
@@ -64,9 +64,20 @@ a, a:link, a:hover, a:active, a:visited, .logo, .header_mazaci {
 .mazaci-portrait {
   background-color: red;
   width: 300px;
-  height: 200px;
+  height:200px;
 }
 
-.mazaci-portrait-side {
-  margin-top: 2em;
+
+a.thumbnail.thumbnail-mazaci:link,
+a.thumbnail.thumbnail-mazaci:active,
+a.thumbnail.thumbnail-mazaci:visited
+ {
+  border: 1px solid white;
+  text-decoration: none;
+}
+
+a.thumbnail.thumbnail-mazaci:hover,
+a.thumbnail.thumbnail-mazaci:focus {
+  border: 1px solid green;
+  text-decoration: none;
 }

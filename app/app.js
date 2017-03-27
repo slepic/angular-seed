@@ -38,19 +38,19 @@ angular.module('mazaci.cz', ['pascalprecht.translate', 'thatisuday.ng-image-gall
     phone : "+420 776 660 150",
     email : "vymazal@mazaci.cz",
     dic : "XXXCZ",
-    photo : "url('img/contacts/vymazal.png')"
+    photo : "url('img/gallery/test1.jpg')"
   }, {
     name : "Tomáš Toufar",
     phone : "+420 775 432 900",
     email : "toufar@mazaci.cz",
     dic : "XXXCZ",
-    photo : "url('img/contacts/toufar.png')"
+    photo : "url('img/gallery/test2.jpg')"
   }, {
     name : "Někdo Další",
     phone : "+420 775 432 900",
     email : "dalsi@mazaci.cz",
     dic : "XXXCZ",
-    photo : "url('img/contacts/toufar.png')"
+    photo : "url('img/gallery/test1.jpg')"
   }];
 
   $scope.allImages = [{
@@ -81,6 +81,10 @@ angular.module('mazaci.cz', ['pascalprecht.translate', 'thatisuday.ng-image-gall
   $scope.showImages = function (type) {
     $scope.filterImages(type);
     $scope.gallery.open(0);
+  };
+
+  $scope.galleryClosed = function () {
+    jQuery('body').click();
   };
 })
 

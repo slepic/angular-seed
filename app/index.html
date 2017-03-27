@@ -33,9 +33,9 @@
             <span class="flag-icon flag-icon-cz"></span> <span class="caret"></span>
           </div>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="#"><span class="flag-icon flag-icon-cz pull-right"></span>Česky</a></li>
-            <li><a href="de.html"><span class="flag-icon flag-icon-de pull-right"></span>Deutsch</a></li>
-            <li><a href="en.html"><span class="flag-icon flag-icon-gb pull-right"></span>English</a></li>
+            <li><a href="/#"><span class="flag-icon flag-icon-cz pull-right"></span>Česky</a></li>
+            <li><a href="/de.html#"><span class="flag-icon flag-icon-de pull-right"></span>Deutsch</a></li>
+            <li><a href="/en.html#"><span class="flag-icon flag-icon-gb pull-right"></span>English</a></li>
           </ul>
         </div>
       </div>
@@ -109,11 +109,11 @@
 
       <div data-ng-show="view == 'contacts'">
         <h1 class="header-mazaci">Kontakty</h1>
-        <div data-ng-repeat="contact in contacts" class="jumbotron jumbotron-mazaci wrapper-contact">
-          <div class="col-md-5" data-ng-class="{'pull-right':$index%2==0, 'pull-left':$index%2==1}" data-ng-style="{'text-align':($index%2==0?'-webkit-right':'-webkit-left')}">
-            <div class="mazaci-portrait" data-ng-style="{'background-image':contact.photo}"></div>
+        <div data-ng-repeat="contact in contacts" class="jumbotron jumbotron-mazaci media">
+          <div data-ng-if="$index%2==1" class="media-left media-middle">
+            <div class="mazaci-portrait media-object" data-ng-style="{'background-image':contact.photo}"></div>
           </div>
-          <div data-ng-class="{'pull-right':$index%2==1, 'pull-left':$index%2==0}" class="col-md-7">
+          <div class="media-body media-middle container">
             <table class="table table-mazaci-contacts">
               <colgroup>
                 <col class="col-md-2" />
@@ -121,7 +121,7 @@
               </colgroup>
               <tbody>
                 <tr>
-                  <th></th>
+                  <th>Mazák</th>
                   <td data-ng-bind="contact.name"></td>
                 </tr>
                 <tr>
@@ -139,28 +139,30 @@
               </tbody>
             </table>
           </div>
-          <div style="clear:both;"></div>
+          <div data-ng-if="$index%2==0" class="media-right media-middle">
+            <div class="mazaci-portrait media-object" data-ng-style="{'background-image':contact.photo}"></div>
+          </div>
         </div>
       </div>
 
       <div data-ng-show="view == 'references'">
         <h1 class="header-mazaci">Reference</h1>
-        <div class="jumbotron jumbotron-mazaci container-fluid">
+        <div class="container-fluid jumbotron jumbotron-mazaci">
           <div class="col-md-4">
-            <a href="#references" data-ng-click="showImages('silo')">
-              <div class="mazaci-portrait mazaci-portrait-side"></div>
+            <a href="#references" class="thumbnail thumbnail-mazaci" data-ng-click="showImages('silo')">
+              <div class="mazaci-portrait" style="background-image:url('img/gallery/test1.jpg')"></div>
               <h2 class="header-mazaci">Sila</h2>
             </a>
           </div>
           <div class="col-md-4">
-            <a href="#references" data-ng-click="showImages('chimney')">
-              <div class="mazaci-portrait"></div>
+            <a href="#references" class="thumbnail thumbnail-mazaci" data-ng-click="showImages('chimney')">
+              <div class="mazaci-portrait" style="background-image:url('img/gallery/test2.jpg')"></div>
               <h2 class="header-mazaci">Komíny</h2>
             </a>
           </div>
           <div class="col-md-4">
-            <a href="#references" data-ng-click="showImages()">
-              <div class="mazaci-portrait mazaci-portrait-side"></div>
+            <a href="#references" class="thumbnail thumbnail-mazaci" data-ng-click="showImages()">
+              <div class="mazaci-portrait" style="background-image:url('img/gallery/test2.jpg')"></div>
               <h2 class="header-mazaci">Sloupy</h2>
             </a>
           </div>
@@ -169,13 +171,19 @@
             images="images"
             methods="gallery"
             thumbnails="false"
+            on-close="galleryClosed();"
         ></div>
       </div>
 
     </div>
 
     <div class="block-footer">
-      Copyleft <span class="copy-left">&copy;</span> 2017 <a>slepic</a> | Designed for <a href="#" data-ng-click="showTab('home')">mazáci.cz</a> | Powered by <a>Angular.js</a> | Decorated with <a>Bootstrap CSS</a> | Hosted on <a>GitHub</a> | Country flags provided by <a>Flag Icon CSS</a>
+      Copyleft <span class="copy-left">&copy;</span> 2017 <a>slepic</a>
+      | Designed for <a href="#" data-ng-click="showTab('home')">mazáci.cz</a>
+      | Powered by <a>Angular.js</a>
+      | Decorated with <a>Bootstrap CSS</a>
+      | Hosted on <a>GitHub</a>
+      | Country flags provided by <a>Flag Icon CSS</a>
     </div>
   </div>
 
